@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Header Styles */
+        header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Apply background styles to the header */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        }
+        .logo img {
+            width: 100px; /* Adjust the width as needed */
+            height: auto;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 120px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+        nav ul li:first-child {
+            margin-left: auto;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Giant Text Styles */
+        .giant-text {
+            font-size: 72px; /* Adjust the font size as needed */
+            font-weight: bold;
+            text-align: center;
+            margin-top: 100px; /* Adjust the top margin as needed */
+        }
+
+        /* Background Styles */
+        body, header {
+            /* Apply background styles to both body and header */
+            background-color: #212534; /* Change to your desired background color */
+            /* Uncomment the line below to use a background image */
+            /* background-image: url('background.jpg'); */
+            /* Uncomment and adjust the properties below to customize background image behavior */
+            /* background-size: cover; */
+            /* background-position: center; */
+            /* background-repeat: no-repeat; */
+            /* background-attachment: fixed; */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+        }
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Draggable modal */
+        .draggable {
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="logo dropdown">
+            <img src="images/ICON Menu.png" alt="Your Logo">
+            <div class="dropdown-content">
+                <a href="#" class="modal-open" data-modal-target="modal-music">Music</a>
+                <a href="#" class="modal-open" data-modal-target="modal-store">Store</a>
+                <a href="#" class="modal-open" data-modal-target="modal-dates">Dates</a>
+                <a href="#" class="modal-open" data-modal-target="modal-socials">Socials</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Music Modal -->
+    <div id="modal-music" class="modal draggable">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p>This is the Music Modal.</p>
+            <!-- Add your custom audio player here -->
+            <div class="audio-player">
+                <audio controls>
+                    <source src="your-audio-file.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <!-- Play/Pause button -->
+                <button class="audio-control-button play-pause">Play</button>
+                <div class="audio-controls">
+                    <button class="audio-control-button">Prev</button>
+                    <button class="audio-control-button">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Dates Modal -->
+    <div id="modal-dates" class="modal draggable">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p>This is the Dates Modal.</p>
+            <!-- Add your calendar here -->
+            <!-- Example: Google Calendar embedded iframe -->
+            <iframe src="https://calendar.google.com/calendar/embed?src=example%40gmail.com" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <!-- Store Modal -->
+    <div id="modal-store" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p>This is the Store Modal.</p>
+            <!-- Add your store link here -->
+            <a href="https://example.com/store" target="_blank">Visit our store</a>
+        </div>
+    </div>
+
+    <!-- Socials Modal -->
+    <div id="modal-socials" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p>This is the Socials Modal.</p>
+            <!-- Add your socials-related content here -->
+        </div>
+    </div>
+
+    <main>
+        <div class="giant-text">
+            ROCHÉ
+        </div>
+        <!-- Your main content here -->
+    </main>
+
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+
+    <script>
+        // Get all modal-open links
+        const modalOpenLinks = document.querySelectorAll('.modal-open');
+
+        // Loop through each modal-open link
+        modalOpenLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetModalId = this.getAttribute('data-modal-target');
+                const targetModal = document.getElementById(targetModalId);
+                if (targetModal) {
+                    targetModal.style.display = 'block';
+                }
+            });
+        });
+
+        // Get all modal-close buttons
+        const modalCloseButtons = document.querySelectorAll('.modal-close');
+
+        // Loop through each modal-close button
+        modalCloseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Make the modals draggable
+        const draggableModals = document.querySelectorAll('.draggable');
+        draggableModals.forEach(modal => {
+            makeModalDraggable(modal);
+        });
+
+        function makeModalDraggable(modal) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (modal) {
+                // When a user clicks and holds the mouse button down on the modal header
+                modal.querySelector('.modal-content').onmousedown = dragMouseDown;
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // Get the initial mouse cursor position
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // Call the function whenever the cursor moves
+                    document.onmousemove = elementDrag;
+                    // Call a function when the user releases the mouse button
+                    document.onmouseup = closeDragElement;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // Calculate the new cursor position
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // Set the modal's new position
+                    modal.style.top = (modal.offsetTop - pos2) + "px";
+                    modal.style.left = (modal.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    // Stop moving when mouse button is released
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+        } // Custom Audio Player
+    const playPauseButton = document.querySelector('.audio-control-button.play-pause');
+    const audio = document.querySelector('.audio-player audio');
+
+    playPauseButton.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseButton.textContent = 'Pause';
+        } else {
+            audio.pause();
+            playPauseButton.textContent = 'Play';
+        }
+    });
+</script>
+    </script>
+</body>
+</html>
+
