@@ -1,0 +1,16 @@
+.draggable {
+    cursor: move;
+}
+/* Background Styles */
+body, header {
+    /* Apply background styles to both body and header */
+    background-color: #212534; /* Change to your desired background color */
+    background-image: url('images/Dimond-Rose.jpg'); /* Add your image URL here */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    /* Uncomment and adjust the properties below to customize background image behavior */
+    /* background-attachment: fixed; */
+}
+background-size: contain;
+
